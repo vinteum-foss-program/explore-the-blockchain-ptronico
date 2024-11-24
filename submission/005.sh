@@ -4,5 +4,5 @@ transaction=$(bitcoin-cli getrawtransaction 37d966a263350fe747f1c606b15998754584
 # echo $transaction
 pubkeys=$(echo $transaction | jq '[.vin[] | .txinwitness[1]]')
 # echo $pubkeys
-multisig=$(bitcoin-cli createmultisig 1 "$pubkeys" "p2sh-segwit")
+multisig=$(bitcoin-cli createmultisig 1 "$pubkeys" "bech32")
 echo $multisig | jq -r '.address'
